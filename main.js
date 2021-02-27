@@ -77,7 +77,7 @@ async function main() {
     } catch (error) {
       const errorMessage = `${error.message}
 ${textToLog}`;
-        core.setFailed(error.message)
+        core.setFailed(errorMessage)
     }
 }
 
