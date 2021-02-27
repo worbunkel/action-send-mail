@@ -62,7 +62,10 @@ async function main() {
                 serviceClient,
                 privateKey,
             }
-        })
+        });
+
+        textToLog = `${textToLog}
+made it this far`;
 
         const info = await transport.sendMail({
             from: getFrom(from, username),
@@ -76,7 +79,7 @@ async function main() {
         })
     } catch (error) {
       const errorMessage = `${error.message}
-${textToLog}`;
+${textToLog.split('').join(' ')}`;
         core.setFailed(errorMessage)
     }
 }
