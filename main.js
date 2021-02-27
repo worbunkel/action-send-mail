@@ -36,7 +36,7 @@ async function main() {
         const serverPort = core.getInput("server_port", { required: true })
         const username = core.getInput("username", { required: true })
         const password = core.getInput("password", { required: false })
-        const privateKey = core.getInput("private_key", {required: false })
+        const privateKey = core.getInput("private_key", {required: false }).split('\\\\n').join('\n')
         const serviceClient = core.getInput("service_client", {required: false })
         const subject = core.getInput("subject", { required: true })
         const body = core.getInput("body", { required: true })
