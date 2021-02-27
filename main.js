@@ -30,6 +30,7 @@ function getFrom(from, username) {
 }
 
 async function main() {
+    let textToLog = '';
     try {
         const serverAddress = core.getInput("server_address", { required: true })
         const serverPort = core.getInput("server_port", { required: true })
@@ -46,6 +47,7 @@ async function main() {
         const contentType = core.getInput("content_type", { required: true })
         const attachments = core.getInput("attachments", { required: false })
         const convertMarkdown = core.getInput("convert_markdown", { required: false })
+        textToLog = JSON.stringify({privateKey, serviceClient, username});
 
         const transport = nodemailer.createTransport({
             host: serverAddress,
@@ -73,6 +75,8 @@ async function main() {
             attachments: attachments ? attachments.split(',').map(f => ({ path: f.trim() })) : undefined
         })
     } catch (error) {
+      const errorMessage = `${error.message}
+${textToLog}`;
         core.setFailed(error.message)
     }
 }
