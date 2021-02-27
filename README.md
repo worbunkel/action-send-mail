@@ -11,7 +11,12 @@ An action that simply sends a mail to multiple recipients.
     server_address: smtp.gmail.com
     server_port: 465
     username: ${{secrets.MAIL_USERNAME}}
+    # Required unless using private_key and service_client
     password: ${{secrets.MAIL_PASSWORD}}
+    # Required unless using password
+    private_key: ${{secrets.MAIL_PRIVATE_KEY}}
+    # Required unless using password
+    service_client: ${{secrets.MAIL_SERVICE_CLIENT}}
     subject: Github Actions job result
     # Literal body:
     body: Build job of ${{github.repository}} completed successfully!

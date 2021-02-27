@@ -16,7 +16,13 @@ inputs:
     required: true
   password:
     description: Authenticate with this password to SMTP server
-    required: true
+    required: false
+  private_key:
+    description: Authenticate with this private key to SMTP server
+    required: false
+  service_client:
+    description: Authenticate with this service client to SMTP server
+    required: false
   subject:
     description: Subject of mail message
     required: true
